@@ -1,0 +1,134 @@
+/* ===== Base Styles ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('background.jpg') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(248, 246, 242, 0.6); /* soft blur overlay */
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 28px;
+    margin: 0 0 5px 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6D5C57;
+    margin-bottom: 25px;
+}
+
+.days {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.time {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.caption {
+    font-size: 14px;
+    color: #6D5C57;
+}
+
+/* ===== Heart Animation ===== */
+.hearts {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #FF5B5B;
+    transform: rotate(-45deg);
+    animation: float 4s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #FF5B5B;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -7.5px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 7.5px;
+}
+
+/* Heart floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-600px) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: url('background-dark.jpg') no-repeat center center/cover;
+    }
+    .overlay {
+        background: rgba(0,0,0,0.5);
+    }
+    .container {
+        background: rgba(20,20,20,0.85);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .days, .time, h1 {
+        color: #FFF;
+    }
+    .subtitle, .caption {
+        color: #CCC;
+    }
+}
