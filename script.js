@@ -1,4 +1,4 @@
-const startDate = new Date('2018-06-13T00:00:00');
+const startDate = new Date(2018, 5, 13, 0, 0, 0);
 
 function updateTimer() {
   const now = new Date();
